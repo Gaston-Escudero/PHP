@@ -8,11 +8,11 @@
 </head>
 <body>
     <?php
-
+        //ESTE ES MI PRIMER PROGRAMA
         echo "hola mundo<br>";
         echo date("d/m/Y");
         
     ?>
-    
+
 </body>
 </html>
