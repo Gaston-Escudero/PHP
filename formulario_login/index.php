@@ -1,3 +1,24 @@
+<?php 
+
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(E_ALL);
+
+IF($_POST){
+    $usuario = $_POST["txtUsuario"];
+    $clave = $_POST["txtClave"];
+
+    if($usuario == "admin" && $clave == "123456"){
+        header("Location: acceso-corfirmado.php");
+    } else {
+        $msg ="Usuario o clave incorrecto";
+    }
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,6 +34,25 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1>Formulario</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <form action="" method="post">
+                    <div class="py-3">
+                        <label for="txtUsuario">Usuario:</label>
+                        <input class="form-control" type="text" name="txtUsuario" id="txtUsuario">
+                    </div>
+                    <div class="py-3">
+                        <label for="txtClave">Clave:</label>
+                        <input class="form-control" type="password" name="txtClave" id="txtClave">
+                    </div>
+                    <div class="py-3">
+                        <button class="btn btn-primary" type="submit">Ingresar</button>
+                    </div>
+
+                </form>
+
             </div>
 
         </div>
