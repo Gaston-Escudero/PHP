@@ -27,6 +27,12 @@ $aEmpleados[] = array(
     "bruto" => 70000,
 );
 
+function calcularNeto($bruto){
+
+    return $bruto -($bruto*0.17);
+
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -58,27 +64,19 @@ $aEmpleados[] = array(
                     </thead>
                     <tbody>
                     
-                    <?php
-                        $sumatoriaPrecio=0;
-                        for ($contador=0;$contador<count($aProductos);$contador++){
-                       
-                        $sumatoriaPrecio += $aProductos[$contador]["precio"];
-                    ?>
-                         
+                    <?php foreach($aEmpleados as $empleado){ ?>                         
                         <tr>
-                            <td><?php echo $aProductos[$contador]["nombre"]; ?></td>
-                            <td><?php echo $aProductos[$contador]["marca"]; ?></td>
-                            <td><?php echo $aProductos[$contador]["modelo"]; ?></td>
+                            <td><?php echo $empleado["dni"]; ?></td>
+                            <td><?php echo mb_strtoupper ($empleado["nombre"]); ?></td>
+                            <td>$<?php echo number_format(calcularNeto($empleado["bruto"]),2,",","."); ?></td>
                         </tr>
-                    <?php
-                    }             
-                    ?>    
+                    <?php } ?>    
                     </tbody>
                 </table>
             </div>
             <div class="row">
                 <div class="col-12">
-                <p>El subtotal es=<?php echo $sumatoriaPrecio?></p>
+                        <p>Cantidad de empleados activos:  <?php echo count($aEmpleados); ?> </p>
                 </div>
 
             </div>
