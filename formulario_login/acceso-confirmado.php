@@ -18,15 +18,16 @@
         <div class="row">
             <div class="col-12 mx-3">
                 <div class="alert alert-primary" role="alert">  
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde soluta repellat, iusto neque exercitationem minima harum dolores perspiciatis dicta sapiente quae tempora quam odit quo, corporis itaque. Exercitationem, quaerat esse?                       
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde soluta repellat, 
+                    iusto neque exercitationem minima harum dolores perspiciatis dicta sapiente quae tempora quam odit quo, 
+                    corporis itaque. Exercitationem, quaerat esse?                       
                 </div>   
             </div>  
         </div> 
         <div class="row">
             <div class="col-12">
                 <a href="index.php" class="btn btn-primary float-end">Salir</a>
-            </div>
-                   
+            </div>                   
         </div>
     
     </main>
