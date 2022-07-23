@@ -39,11 +39,11 @@ if($_POST){ //es postback?
         </div>
         <div class="row">
             <div class="col-6">
-                <?php if( isset($mensaje)):?>
+                <?php if( isset($mensaje)){?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $mensaje; ?>
                     </div>    
-                <?php endif; ?>    
+                <?php } ?>    
                 <form method="POST" action="">
                     <div class="py-3">
                         <label for="txtUsuario">Usuario:</label>
