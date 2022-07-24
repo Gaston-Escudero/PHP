@@ -54,8 +54,8 @@ function promediar($aNotas) {
                         $sumPromedios = 0;
                         foreach($aAlumnos as $alumno){ 
                             $pos++;
-                        $promedio = promediar($alumno["notas"]);
-                        $sumPromedios += $promedio;
+                            $promedio = promediar($alumno["notas"]);
+                            $sumPromedios += $promedio;
                         ?>
                             <tr>
                                 <td><?php echo $alumno["nombre"]; ?></td>
