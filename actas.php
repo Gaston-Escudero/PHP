@@ -17,7 +17,6 @@ function promediar($aNotas) {
     return $suma/ count($aNotas);
 
 }
- 
 
 ?>
 <!DOCTYPE html>
