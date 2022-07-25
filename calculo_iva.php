@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <main class="row">
+    <main class="container">
 
     </main>
 </body>
