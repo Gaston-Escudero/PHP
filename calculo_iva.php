@@ -13,17 +13,20 @@ if($_POST){
     $precioSinIva = ($_POST["txtPrecioSinIva"]) > 0? $_POST["txtPrecioSinIva"]: 0;
     $precioConIva = ($_POST["txtPrecioConIva"]) > 0? $_POST["txtPrecioConIva"]: 0;
     //print_r($_POST);
-    $ivaCantidad = $precioConIva - $precioSinIva;
+    
 
     //Dado un importe sin IVA, Precio con IVA= importe*(21/100+1)
     if($precioSinIva > 0){
-        $precioConIva =$precioSinIva * ($iva/100+1);
+        $precioConIva = $precioSinIva * ($iva/100+1);
+        $ivaCantidad= $precioConIva - $precioSinIva;
     }
 
     //Dado un importe CON IVA, Precio sin IVA= importe*(21/100+1)
     if($precioConIva > 0){
-        $precioSinIva =$precioConIva * ($iva/100+1);
+        $precioSinIva = $precioConIva / ($iva/100+1);
+        $ivaCantidad= $precioConIva - $precioSinIva;
     }
+    
 
 }
 ?>
