@@ -25,6 +25,23 @@ if ($_POST){
     $nombreImagen= "";
 
     if($pos>=0){
+        if($_FILES["archivo"]["error"] == UPLOAD_ERR_OK){
+            $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
+            $archivo_tmp = $_FILES ["archivo"]["tmp_name"];
+            $extension = strtolower (pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION));
+            if($extension =="jpg" || $extension == "jpeg" || $extension == "png"){
+                $nombreImagen = "$nombreAleatorio.$extension";
+                move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
+            }
+            //Eliminar la imagen anterior
+            if($aClientes[$pos]["imagen"] !="" && file_exists("imagenes/" . $aClientes[$pos]["imagen"])){
+                unlink ("imagenes/" . $aClientes[$pos]["imagen"]);
+            }
+        } else {
+            //Mantener el nombreImagen que teniamos antes
+            $nombreImagen = $aClientes[$pos]["imagen"];
+       }
+
         //ACTUALIZAR
         $aClientes["$pos"] = array("dni"=> $dni,
                          "nombre"=> $nombre,
@@ -32,14 +49,7 @@ if ($_POST){
                          "correo"=> $correo,
                          "imagen" => $nombreImagen);
     } else{
-        $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
-        $archivo_tmp = $_FILES ["archivo"]["tmp_name"];
-        $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
-        if($extension =="jpg" || $extension == "jpeg" || $extension == "png"){
-                $nombreImagen = "$nombreAleatorio.$extension";
-            move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
-        }
-
+    
         //INSERTAR
         $aClientes[] = array("dni"=> $dni,
                             "nombre"=> $nombre,
