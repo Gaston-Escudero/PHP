@@ -13,7 +13,7 @@ if($_POST){
     //Crear una variable de session con tu nombre
     //Redireccionar a index.php
     if($usuario == "admin" && $clave == "admin123"){
-        $_SESSION["nombre"] = "Gaston";
+        $_SESSION["nombre"] = "Gastón";
         header("Location: index.php");
       //sino
     } else {
