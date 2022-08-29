@@ -11,7 +11,7 @@
 
     //definiciones de clases
 
-    class Persona{
+    abstract class Persona{
         protected $dni;
         protected $nombre;
         protected $correo;
