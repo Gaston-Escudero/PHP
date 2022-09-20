@@ -1,17 +1,51 @@
 <?php
-
 include_once "config.php";
 include_once "entidades/producto.php";
 include_once "entidades/tipoproducto.php";
 
 $producto = new Producto();
 
+if ($_POST) {
+    if (isset($_POST["btnGuardar"])) {
+        $producto->cargarFormulario($_REQUEST);
+
+        if (isset($_GET["id"]) && $_GET["id"] > 0) {
+            $producto->actualizar();
+            $msg["texto"] = "Actualizado correctamente";
+            $msg["codigo"] = "alert-success";
+        } else {
+            $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
+            $archivo_tmp = $_FILES ["archivo"]["tmp_name"];
+            $nombreArchivo = $_FILES["archivo"]["name"];
+            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+            $nombreImagen = "$nombreAleatorio.$extension";
+            
+            if($extension =="jpg" || $extension == "jpeg" || $extension == "png"){
+                move_uploaded_file($archivo_tmp, "files/$nombreImagen");
+            }
+            $producto->imagen = $nombreImagen;
+
+            $producto->insertar();
+            $msg["texto"] = "Insertado correctamente";
+             $msg["codigo"] = "alert-success";
+        }
+
+    } else if (isset($_POST["btnBorrar"])) {
+        $producto->cargarFormulario($_REQUEST);
+        $producto->eliminar();
+        header("Location: producto-listado.php");
+    }
+}
+
+if (isset($_GET["id"]) && $_GET["id"] > 0) {
+    $producto->cargarFormulario($_REQUEST);
+    $producto->obtenerPorId();
+}
 
 $tipoProducto = new TipoProducto();
 $aTipoProductos = $tipoProducto->obtenerTodos();
 
 include_once "header.php";
-
 
 ?>
 

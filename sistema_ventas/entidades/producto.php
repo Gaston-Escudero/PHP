@@ -26,6 +26,15 @@ class Producto{
         return $this;
     }
 
+    public function cargarFormulario($request){
+        $this->idproducto = isset($request["id"])? $request["id"] : "";
+        $this->nombre = isset($request["txtNombre"])? $request["txtNombre"] : "";
+        $this->fk_idtipoproducto = isset($request["lstTipoProducto"])? $request["lstTipoProducto"] : "";
+        $this->cantidad = isset($request["txtCantidad"])? $request["txtCantidad"]: 0;
+        $this->precio = isset($request["txtPrecio"])? $request["txtPrecio"]: 0;
+        $this->descripcion = isset($request["txtDescripcion"])? $request["txtDescripcion"] : "";
+    }
+
     public function insertar()
     {
         //Instancia la clase mysqli con el constructor parametrizado
@@ -33,18 +42,19 @@ class Producto{
         //Arma la query
         $sql = "INSERT INTO productos (
                     nombre,
+                    fk_idtipoproducto,
                     cantidad,
                     precio,
                     descripcion,
-                    imagen,
-                    fk_idtipoproducto,
+                    imagen
+
                 ) VALUES (
                     '$this->nombre',
+                    $this->fk_idtipoproducto,
                     $this->cantidad,
                     $this->precio,
                     '$this->descripcion',
-                    '$this->imagen',
-                    $this->fk_idtipoproducto
+                    '$this->imagen'
                     
                 );";
         // print_r($sql);exit;
