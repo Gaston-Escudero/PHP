@@ -10,20 +10,43 @@ if ($_POST) {
         $producto->cargarFormulario($_REQUEST);
 
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
+
+            if($_FILES["archivo"]["error"] == UPLOAD_ERR_OK){
+                $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
+                $archivo_tmp = $_FILES ["archivo"]["tmp_name"];
+                $nombreArchivo = $_FILES["archivo"]["name"];
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                $nombreImagen = "$nombreAleatorio.$extension";
+                
+                if($extension =="jpg" || $extension == "jpeg" || $extension == "png"){
+                    move_uploaded_file($archivo_tmp, "files/$nombreImagen");
+                }
+                $producto->imagen = $nombreImagen;
+            } else {
+                $productoAnt = new Producto();
+                $productoAnt->idproducto = $_GET["id"];
+                $productoAnt->obtenerPorId();
+                $producto->imagen = $productoAnt->imagen;
+            }
+
             $producto->actualizar();
             $msg["texto"] = "Actualizado correctamente";
             $msg["codigo"] = "alert-success";
+
         } else {
-            $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
-            $archivo_tmp = $_FILES ["archivo"]["tmp_name"];
-            $nombreArchivo = $_FILES["archivo"]["name"];
-            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-            $nombreImagen = "$nombreAleatorio.$extension";
-            
-            if($extension =="jpg" || $extension == "jpeg" || $extension == "png"){
-                move_uploaded_file($archivo_tmp, "files/$nombreImagen");
+
+            if($_FILES["archivo"]["error"] == UPLOAD_ERR_OK){
+                $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
+                $archivo_tmp = $_FILES ["archivo"]["tmp_name"];
+                $nombreArchivo = $_FILES["archivo"]["name"];
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                $nombreImagen = "$nombreAleatorio.$extension";
+                
+                if($extension =="jpg" || $extension == "jpeg" || $extension == "png"){
+                    move_uploaded_file($archivo_tmp, "files/$nombreImagen");
+                }
+                $producto->imagen = $nombreImagen;
             }
-            $producto->imagen = $nombreImagen;
 
             $producto->insertar();
             $msg["texto"] = "Insertado correctamente";

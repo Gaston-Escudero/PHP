@@ -42,19 +42,19 @@ class Producto{
         //Arma la query
         $sql = "INSERT INTO productos (
                     nombre,
-                    fk_idtipoproducto,
                     cantidad,
                     precio,
                     descripcion,
-                    imagen
+                    imagen,
+                    fk_idtipoproducto
 
                 ) VALUES (
                     '$this->nombre',
-                    $this->fk_idtipoproducto,
                     $this->cantidad,
                     $this->precio,
                     '$this->descripcion',
-                    '$this->imagen'
+                    '$this->imagen',
+                    $this->fk_idtipoproducto
                     
                 );";
         // print_r($sql);exit;
@@ -78,7 +78,7 @@ class Producto{
                 precio = $this->precio,
                 descripcion = '$this->descripcion',
                 imagen =  '$this->imagen',
-                fk_idtipoproducto =  '$this->fk_idtipoproducto'
+                fk_idtipoproducto =  $this->fk_idtipoproducto
                 WHERE idproducto = $this->idproducto";
 
         if (!$mysqli->query($sql)) {
