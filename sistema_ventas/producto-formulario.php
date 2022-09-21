@@ -55,6 +55,10 @@ if ($_POST) {
 
     } else if (isset($_POST["btnBorrar"])) {
         $producto->cargarFormulario($_REQUEST);
+        $producto->obtenerPorId();
+        if(file_exists("files/$producto->$imagen")){
+            unlink("files/$producto->$imagen");
+        }
         $producto->eliminar();
         header("Location: producto-listado.php");
     }
