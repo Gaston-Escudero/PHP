@@ -37,7 +37,7 @@ include_once "header.php";
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Tipo de productos</h1>
-          <?php if (isset($msg)): ?>
+            <?php if (isset($msg)): ?>
             <div class="row">
                 <div class="col-12">
                     <div class="alert <?php echo $msg["codigo"]; ?>" role="alert">
