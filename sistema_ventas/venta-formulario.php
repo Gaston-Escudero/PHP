@@ -1,7 +1,6 @@
 <?php
 
 include_once "config.php";
-include_once "tipoproducto-formulario.php";
 include_once "entidades/cliente.php";
 include_once "entidades/producto.php";
 include_once "entidades/venta.php";
@@ -41,6 +40,7 @@ $aClientes = $cliente->obtenerTodos();
 $producto = new Producto();
 $aProductos = $producto->obtenerTodos();
 
+$pg = "Edición de ventas";
 include_once("header.php"); 
 ?>
 
