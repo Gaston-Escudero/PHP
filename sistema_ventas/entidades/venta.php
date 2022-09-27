@@ -135,8 +135,7 @@ class Venta
 
     }
 
-    public function obtenerVentasPorCliente($idCliente)
-    {
+    public function obtenerVentasPorCliente($idCliente){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT idventa,
                         fk_idcliente,
@@ -167,7 +166,6 @@ class Venta
         }
         $mysqli->close();
         return $aResultado;
-
     }
 
     public function obtenerTodos()
