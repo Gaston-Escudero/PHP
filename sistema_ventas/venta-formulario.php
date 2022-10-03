@@ -5,7 +5,6 @@ include_once "entidades/cliente.php";
 include_once "entidades/producto.php";
 include_once "entidades/venta.php";
 
-
 $venta = new Venta();
 
 if ($_POST) {
