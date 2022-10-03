@@ -83,6 +83,8 @@ if (isset($_GET["id"]) && $_GET["id"] > 0) {
 $tipoProducto = new TipoProducto();
 $aTipoProductos = $tipoProducto->obtenerTodos();
 
+$pg = "Edicion de Productos";
+
 include_once "header.php";
 
 ?>

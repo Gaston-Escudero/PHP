@@ -4,6 +4,7 @@ include_once "entidades/tipoproducto.php";
 include_once "entidades/producto.php";
 
 
+
 $tipoProducto = new TipoProducto();
 
 if ($_POST) {
@@ -40,6 +41,8 @@ if (isset($_GET["id"]) && $_GET["id"] > 0) {
     $tipoProducto->cargarFormulario($_REQUEST);
     $tipoProducto->obtenerPorId();
 }
+
+$pg = "Edicion de Tipo de Producto";
 
 include_once "header.php";
 ?>
